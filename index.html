@@ -1536,8 +1536,51 @@
   @media (max-width: 900px) {
     .histoire-grid { grid-template-columns: 1fr; gap: 4rem; }
     .histoire-body { column-count: 1; }
-    .histoire-photos { padding-bottom: 9rem; }
-    .h-photo-a { width: 72%; }
+    .h-year[style*="break-before"] { break-before: auto !important; }
+    .histoire-photos {
+      position: relative !important;
+      display: block;
+      padding-top: 5rem;
+      padding-bottom: 8rem;
+      min-height: unset;
+      height: auto;
+      overflow: visible;
+    }
+    .histoire-section { overflow: visible; padding-bottom: 4rem; }
+    footer#carnet { display: none; }
+    /* photo-a : grande photo principale en flux */
+    .h-photo-a {
+      position: relative !important;
+      width: 62% !important;
+      top: auto !important; left: auto !important; right: auto !important; bottom: auto !important;
+      transform: rotate(-1.8deg);
+      z-index: 1;
+      display: block;
+    }
+    /* photo-b : droite, chevauchant photo-a */
+    .h-photo-b {
+      width: 48% !important;
+      position: absolute !important;
+      top: 38% !important; right: 0 !important; left: auto !important; bottom: auto !important;
+      transform: rotate(2deg);
+      z-index: 2;
+    }
+    /* photo-c : coin haut-gauche */
+    .h-photo-c {
+      width: 36% !important;
+      position: absolute !important;
+      top: 3% !important; left: -3% !important; right: auto !important; bottom: auto !important;
+      transform: rotate(-1.2deg);
+      z-index: 3;
+    }
+    /* photo-d : coin bas-gauche, petite, rotation forte */
+    .h-photo-d {
+      width: 16% !important;
+      position: absolute !important;
+      bottom: 0 !important; top: auto !important; left: -1% !important; right: auto !important;
+      transform: rotate(-7deg);
+      z-index: 4;
+    }
   }
 
   /* ─────────────── FOOTER ─────────────── */
@@ -1854,83 +1897,85 @@
     .intro-corners div { line-height: 1.5; }
 
     /* ── NAV ── */
-    .nav, .nav.scrolled { padding: .9rem 1.1rem; }
-    .nav-logo-img { height: 52px; }
-    .nav.scrolled .nav-logo-img { height: 44px; }
-    .nav-right { gap: .5rem; flex: 1 1 auto; justify-content: flex-end; min-width: 0; }
+    .nav, .nav.scrolled { padding: 1rem .4rem 1rem 1.1rem; align-items: center; }
+    .nav-logo-img { height: 68px; }
+    .nav.scrolled .nav-logo-img { height: 58px; }
+    .nav-right { gap: .5rem; flex-shrink: 0; justify-content: flex-end; }
+    .player { margin-right: .3rem; }
 
-    /* ── CASSETTE → mini-player pill (mobile) ── */
+    /* ── CASSETTE — design complet réduit (mobile) ── */
     .player {
-      width: auto !important;
-      background: linear-gradient(180deg, #d4be9c 0%, #b9a07a 100%);
-      border-radius: 999px;
-      border: 1px solid #8a6f48;
-      padding: 4px 5px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.18);
-      display: flex; align-items: center; gap: 5px;
+      width: 160px !important;
+      transform-origin: top right;
+      transform: scale(0.78);
       flex-shrink: 0;
       position: relative;
+      /* reset pill */
+      background: #cfb997;
+      border-radius: 7px;
+      border: 1.5px solid #b09870;
+      box-shadow: 0 4px 18px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.10);
+      padding: 0;
+      display: block;
     }
-    /* hide unused cassette chrome */
-    .cass-label::before, .cass-bot-strip, .cass-tape, .cass-side-a, .cass-artist, .cass-track-artist, .cass-nr { display: none; }
-    /* move track title BELOW the pill */
+    /* restaure tout le chrome */
+    .cass-label::before { display: block; }
+    .cass-bot-strip { display: block; }
+    .cass-side-a { display: block; }
+    .cass-artist { display: block; }
+    .cass-track-artist { display: block; }
+    .cass-nr { display: block; }
+    .cass-tape { display: block; }
     .cass-label {
-      position: absolute;
-      top: calc(100% + 5px);
-      left: 50%;
-      right: auto;
-      transform: translateX(-50%);
-      margin: 0; padding: 0; gap: 0;
-      background: transparent; border: none;
-      max-width: 160px;
+      position: relative; top: auto; left: auto; right: auto;
+      transform: none;
+      margin: 8px 10px 0;
+      background: #e8d49a;
+      border-radius: 3px 3px 0 0;
+      padding: 4px 6px;
+      display: flex; align-items: center; gap: 5px;
+      border: 1px solid #c09848; border-bottom: 2px solid #a87e30;
+      max-width: none; overflow: hidden;
     }
     .cass-text { min-width: 0; }
     .cass-track {
-      font-family: var(--display-cond);
-      font-size: .58rem;
-      letter-spacing: .18em;
-      text-transform: uppercase;
-      color: var(--noisette);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      line-height: 1.2;
-      font-weight: 600;
-      text-align: center;
-      opacity: 1;
+      font-size: .6rem; letter-spacing: .05em;
+      text-transform: uppercase; color: #1a0c04;
+      line-height: 1.3; font-weight: 600;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      text-align: left;
     }
-    /* keep brown on both nav states */
     .nav.scrolled .cass-track,
-    .nav:not(.scrolled) .cass-track { color: var(--noisette); text-shadow: none; }
-    /* repurpose reels block as inline pill content */
+    .nav:not(.scrolled) .cass-track { color: #1a0c04; text-shadow: none; }
     .cass-reels {
-      margin: 0; padding: 0; background: transparent; border: none;
-      display: flex; align-items: center; gap: 4px;
+      margin: 0 10px 8px;
+      background: linear-gradient(180deg, #3a1e0a 0%, #2e1608 100%);
+      border: 1px solid #7a4220; border-top: none;
+      border-radius: 0 0 5px 5px;
+      padding: 6px 5px 5px;
+      display: flex; align-items: center; justify-content: space-between;
     }
-    /* keep only one spinning reel as visual indicator */
     .cass-reel-win {
-      width: 22px; height: 22px;
-      border: 1.5px solid #7a5828;
-      box-shadow: inset 0 1px 3px rgba(0,0,0,.6);
-      flex-shrink: 0;
+      width: 30px; height: 30px;
+      border: 2px solid #9a6838;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,.8), 0 1px 3px rgba(0,0,0,.5);
+      flex-shrink: 0; display: flex;
     }
-    .cass-reel-win:last-child { display: none; }
-    .cass-reel-win svg { width: 18px; height: 18px; }
-    /* controls inline */
-    .cass-mid { flex-direction: row; gap: 3px; }
-    .cass-controls { gap: 3px; }
+    .cass-reel-win:last-child { display: flex; }
+    .cass-reel-win svg { width: 26px; height: 26px; }
+    .cass-mid { flex-direction: column; gap: 4px; }
+    .cass-controls { gap: 4px; }
     .player-btn {
-      width: 22px; height: 22px;
-      background: rgba(255,255,255,.18);
-      border: 1px solid rgba(60,40,15,.35);
-      color: #2a1a08;
+      width: 18px; height: 18px;
+      background: none;
+      border: 1px solid rgba(200,150,70,.5);
+      color: #d4a860;
     }
-    .player-btn svg { width: 7px; height: 8px; }
-    .player-btn:hover { background: rgba(255,255,255,.4); }
+    .player-btn svg { width: unset; height: unset; }
     .player.paused .cass-reel-win { opacity: .55; }
 
     /* ── HERO ── */
-    .hero { padding: 6rem 1.1rem 2.5rem; min-height: auto; gap: 2rem; }
+    .hero { padding: 8.5rem 1.1rem 2.5rem; min-height: auto; gap: 2rem; }
     .hero-logo-stamp {
       width: clamp(170px, 50vw, 240px);
       left: auto;
@@ -1938,11 +1983,13 @@
       top: auto !important;
       bottom: 34%;
       transform: rotate(-6deg) scale(.85);
-      opacity: .3;
+      opacity: 1;
+      z-index: 10;
     }
     .hero-logo-stamp.in {
       transform: rotate(-6deg) scale(1);
-      opacity: .4;
+      opacity: 1;
+      z-index: 10;
     }
     .hero-title { font-size: clamp(3rem, 17vw, 5rem); line-height: .85; }
     .hero-meta {
@@ -2002,7 +2049,7 @@
     .gal-stat .val { font-size: .95rem; }
 
     /* ── HISTOIRE ── */
-    .histoire-section { padding: 4rem 1.1rem 3.5rem; }
+    .histoire-section { padding: 4rem 1.1rem 2.5rem; }
     .histoire-tag { font-size: .58rem; letter-spacing: .22em; margin-bottom: 1.2rem; }
     .histoire-grid { grid-template-columns: 1fr; gap: 2rem; }
     .h-quote-left {
@@ -2018,14 +2065,46 @@
       background: transparent;
     }
     .histoire-photos {
-      padding-top: 0; padding-bottom: 7rem;
-      min-height: 380px;
+      position: relative !important;
+      display: block;
+      padding: 0;
       margin-top: 0;
+      height: 360px;
+      min-height: 360px;
     }
-    .h-photo-a { width: 70%; transform: rotate(-1.8deg); }
-    .h-photo-b { width: 52%; top: auto; bottom: 18%; right: 0; transform: rotate(2.2deg); }
-    .h-photo-c { width: 40%; top: 22%; left: auto; right: -3%; transform: rotate(-2deg); }
-    .h-photo-d { width: 28%; bottom: -2%; left: -4%; transform: rotate(-7deg); }
+    .h-quote-left { display: none; }
+    /* photo-a : centre, arrière-plan */
+    .h-photo-a {
+      position: absolute !important;
+      width: 58% !important;
+      top: 18% !important; left: 50% !important; right: auto !important; bottom: auto !important;
+      transform: translateX(-50%) rotate(-1.5deg);
+      z-index: 1;
+    }
+    /* photo-b : coin bas-droite, devant */
+    .h-photo-b {
+      width: 42% !important;
+      position: absolute !important;
+      bottom: 0 !important; top: auto !important; right: 0 !important; left: auto !important;
+      transform: rotate(3.5deg);
+      z-index: 4;
+    }
+    /* photo-c : coin haut-droite, devant */
+    .h-photo-c {
+      width: 36% !important;
+      position: absolute !important;
+      top: 0 !important; right: 0 !important; left: auto !important; bottom: auto !important;
+      transform: rotate(3deg);
+      z-index: 4;
+    }
+    /* photo-d : coin bas-gauche, devant, rotation forte */
+    .h-photo-d {
+      width: 30% !important;
+      position: absolute !important;
+      bottom: 0 !important; top: auto !important; left: 0 !important; right: auto !important;
+      transform: rotate(-6deg);
+      z-index: 5;
+    }
     .histoire-title { font-size: clamp(2rem, 9vw, 2.8rem); text-align: left; margin-bottom: 1.2rem; }
     .histoire-body { column-count: 1; column-gap: 0; }
     .histoire-body p { font-size: .95rem; line-height: 1.55; text-align: left; }
@@ -2046,6 +2125,7 @@
 
     /* ── FOOTER ── */
     footer { padding: 3rem 1.1rem 1.5rem; }
+    footer#carnet { display: none; }
     .footer-big { font-size: clamp(2.5rem, 16vw, 5rem); line-height: .85; }
     .footer-bottom {
       margin-top: 2rem; padding-top: 1.4rem;
@@ -2829,7 +2909,19 @@ const playerEl = document.getElementById('player');
 const TRACKS = [
   { title: 'Follow the Sun',    artist: 'Xavier Rudd',            src: 'media/playlist-01.mp3' },
   { title: "California Dreamin'", artist: "The Mamas & The Papas", src: 'media/playlist-02.mp3' },
-  { title: 'Home',               artist: 'Edward Sharpe & The Magnetic Zeros', src: 'media/playlist-03.mp3' }
+  { title: 'Home',               artist: 'Edward Sharpe & The Magnetic Zeros', src: 'media/playlist-03.mp3' },
+  { title: 'California Love',    artist: 'Tupac',                              src: 'media/playlist-04.mp3' },
+  { title: 'Ventura Highway',    artist: 'America',                            src: 'media/playlist-05.mp3' },
+  { title: 'Life Is a Highway',  artist: 'Tom Cochrane',                       src: 'media/playlist-06.mp3' },
+  { title: 'Californication',    artist: 'Red Hot Chili Peppers',              src: 'media/playlist-07.mp3' },
+  { title: 'Hotel California',   artist: 'Eagles',                             src: 'media/playlist-08.mp3' },
+  { title: 'Adventure Of A Lifetime', artist: 'Coldplay',                      src: 'media/playlist-09.mp3' },
+  { title: 'Walking On A Dream', artist: 'Empire Of The Sun',                  src: 'media/playlist-10.mp3' },
+  { title: 'Californie',         artist: 'Caballero & JeanJass',               src: 'media/playlist-11.mp3' },
+  { title: 'Here Comes The Sun', artist: 'The Beatles',                        src: 'media/playlist-12.mp3' },
+  { title: 'Wonderwall',         artist: 'Oasis',                              src: 'media/playlist-13.mp3' },
+  { title: 'Long Train Running', artist: 'The Doobie Brothers',                src: 'media/playlist-14.mp3' },
+  { title: 'California',         artist: 'Joni Mitchell',                      src: 'media/playlist-15.mp3' }
 ];
 let currentTrack = 0;
 
