@@ -1823,7 +1823,7 @@
   }
   .modal-plan-item {
     display: flex; align-items: flex-start; gap: 1rem;
-    padding: .9rem 0;
+    padding: .4rem 0;
     border-bottom: 1px solid rgba(20,18,15,.06);
     opacity: 0; transform: translateX(-12px);
     animation: planIn .5s cubic-bezier(.2,.7,.2,1) forwards;
@@ -1850,13 +1850,13 @@
   .modal-plan-text { flex: 1; }
   .modal-plan-text strong {
     display: block; font-family: var(--display);
-    font-weight: 500; font-size: 1.05rem;
-    color: var(--ink); margin-bottom: 2px;
+    font-weight: 500; font-size: .92rem;
+    color: var(--ink); margin-bottom: 1px;
     letter-spacing: -0.005em;
   }
   .modal-plan-text small {
     display: block; font-family: var(--display-cond);
-    font-size: .65rem; letter-spacing: .22em;
+    font-size: .6rem; letter-spacing: .2em;
     text-transform: uppercase; color: var(--ink-soft);
   }
 
@@ -2156,7 +2156,7 @@
     .modal-place { font-size: 2rem; margin-bottom: .6rem; }
     .modal-text { font-size: .9rem; line-height: 1.5; }
     .modal-section-tag { font-size: .55rem; letter-spacing: .22em; margin: 1.1rem 0 .5rem; }
-    .modal-plan-item { padding: .7rem 0; gap: .7rem; }
+    .modal-plan-item { padding: .4rem 0; gap: .7rem; }
     .modal-plan-text strong { font-size: .92rem; }
     .modal-plan-text small { font-size: .55rem; letter-spacing: .14em; }
     .modal-close { top: .8rem; right: .8rem; width: 34px; height: 34px; }
@@ -2617,88 +2617,91 @@ const STOPS = [
   { n: 1, name: "San Francisco", state: "Californie · ville", img: "media/SAN-FRANCISCO.jpeg", coords: [37.7749, -122.4194], date: "7 Juillet",
     desc: "La baie, le brouillard, le pont rouge dans la lumière du matin. Arrivée à l'aéroport, premiers pas sur le sol américain. C'est ici que tout commence.",
     plan: [
-      ["Atterrissage & récupération du van", "San Francisco Airport"],
-      ["Golden Gate Bridge", "Première photo depuis le pont"],
-      ["Fisherman's Wharf", "Burritos & vue sur la baie"],
-      ["Lombard Street + Painted Ladies", "Tour photo du quartier"],
-      ["Première nuit dans le van", "Presidio de San Francisco"]
+      ["Jour 1 — Atterrissage", "Hôtel · premiers pas sur le sol américain"],
+      ["Découverte de San Francisco", "Golden Gate · Fisherman's Wharf · Painted Ladies"],
+      ["Soirée en ville", "Dîner dans le quartier"],
+      ["Jour 2 — Matinée libre", "Dernière balade dans la ville"],
+      ["Récupération du van", "Indie Campers · le voyage commence vraiment"]
     ]
   },
   { n: 2, name: "Lake Tahoe & Bodie", state: "Sierra Nevada", img: "media/LAKE TAHOE.png", coords: [39.0968, -120.0324], date: "8–9 Juillet",
     desc: "Le lac de montagne aux eaux turquoise. Route vers Bodie, ville fantôme du Far West gelée dans le temps depuis 1882.",
     plan: [
-      ["Lake Tahoe", "Baignade & kayak dans les eaux cristallines"],
-      ["Emerald Bay State Park", "Vue plongeante sur le lac"],
-      ["Bodie Ghost Town", "Ville fantôme abandonnée · 1882"],
-      ["Route panoramique 395", "Sierra Nevada sous le soleil"]
+      ["Jour 3 — Premiers pas avec le van", "Route vers Lake Tahoe"],
+      ["Camp Richardson", "Installation au bord du lac · dîner dans le van"],
+      ["Première nuit dans le van", "Lake Tahoe · eaux turquoise"],
+      ["Jour 4 — Matinée sur le lac", "Baignade & exploration des rives"],
+      ["Bodie Ghost Town", "Ville fantôme abandonnée · 1882"]
     ]
   },
   { n: 3, name: "Mammoth Lakes & Mariage", state: "Sierra Nevada", img: "media/MAMMOTH-LAKES.jpeg", coords: [37.6485, -118.9721], date: "10–11 Juillet",
     desc: "Altitude, forêts de conifères et air de montagne. Le mariage d'Olivia & Lorenzo, The Contolini's le vrai prétexte de toute l'aventure !",
     plan: [
-      ["Mammoth Lakes", "Arrivée en altitude · 2400m"],
-      ["Mariage d'Olivia & Lorenzo", "The Contolini's · La cérémonie californienne"],
-      ["Devils Postpile", "Formations basaltiques spectaculaires"],
-      ["Rainbow Falls", "Cascade au cœur de la forêt"]
+      ["Jour 5 — Route vers Mammoth", "Rainbow Falls en chemin · 2 400 m d'altitude"],
+      ["Installation & repérage", "Mammoth RV Park"],
+      ["Veille de mariage", "Bowling & dîner avec amis et famille"],
+      ["Jour 6 — Matinée libre", "Exploration des environs de Mammoth"],
+      ["Cérémonie dans la forêt", "Mariage d'Olivia & Lorenzo"],
+      ["Cocktail & réception", "Nuit sur le parking d'Alexa"]
     ]
   },
   { n: 4, name: "Mono Lake", state: "Californie · désert", img: "media/MONO-LAKE.jpeg", coords: [37.9986, -119.0118], date: "12 Juillet",
     desc: "Un lac salé unique et spectaculaire vieux de plus de 760 000 ans. A la découverte du paysage lunaire créé par les tufas colonnes calcaires.",
     plan: [
-      ["South Tufa Area", "Le spot photo incontournable"],
-      ["Navy Beach", "Coucher de soleil sur les formations"],
-      ["Black Point Fissures", "Géologie volcanique fascinante"],
-      ["Nuit sous les étoiles", "Ciel noir exceptionnel"]
+      ["Jour 7 — Route vers Mono Lake", "Déjeuner sur la route"],
+      ["South Tufa Area", "Formations calcaires · paysage lunaire"],
+      ["Exploration du lac", "Vadrouille autour des rives"],
+      ["Mono Vista RV Park", "Nuit sous les étoiles"]
     ]
   },
   { n: 5, name: "Yosemite", state: "Californie · parc", img: "media/YOSEMITE.jpeg", coords: [37.8651, -119.5383], date: "13–14 Juillet",
     desc: "Granite, cascades, séquoias géants. El Capitan et Half Dome au lever du jour. Le parc le plus spectaculaire d'Amérique.",
     plan: [
-      ["Tunnel View", "Vue iconique sur la vallée à l'aube"],
-      ["Glacier Point", "Half Dome à portée de regard"],
-      ["Yosemite Falls", "La plus haute chute des États-Unis"],
-      ["Mariposa Grove", "Séquoias millénaires"],
-      ["Mirror Lake", "Reflet parfait d'Half Dome"]
+      ["Jour 8 — Entrée par Tioga Pass", "3 031 m · Olmsted Point · Tenaya Lake"],
+      ["Tunnel View", "El Capitan + Half Dome + Bridalveil Fall d'un seul regard"],
+      ["El Capitan Meadow & Yosemite Falls", "900 m de granit · plus haute chute d'Amérique"],
+      ["Jour 9 — Bridalveil Fall & Mirror Lake", "Reflet parfait de Half Dome"],
+      ["Sortie vers la côte", "Nuit à Casa de Fruta · Hollister"]
     ]
   },
   { n: 6, name: "Santa Cruz · Monterey · Big Sur", state: "Californie · côte", img: "media/MONTEREY.jpeg", coords: [36.6002, -121.8947], date: "15 Juillet",
     desc: "Glisser sur la côte Pacifique dans toute sa splendeur. La route à flanc de falaise au-dessus de l'océan. Parfait moment pour jouer la playlist à fond la tête par la fenêtre.",
     plan: [
-      ["Santa Cruz Boardwalk", "Le roller coaster face à l'océan"],
-      ["Monterey Bay Aquarium", "Matinée complète"],
-      ["17-Mile Drive", "Pebble Beach · Lone Cypress"],
-      ["Bixby Bridge · Big Sur", "Photo iconique au coucher"],
-      ["McWay Falls", "Cascade qui tombe dans l'océan"]
+      ["Jour 10 — Santa Cruz & 17-Mile Drive", "West Cliff Drive · Lone Cypress · Pebble Beach"],
+      ["Carmel-by-the-Sea & Point Lobos", "Village romantique · eaux émeraude · loutres"],
+      ["Bixby Bridge & Big Sur", "Photo iconique · McWay Falls sur plage turquoise"],
+      ["Nuit sur les falaises du Pacifique", "Kirk Creek ou Plaskett Creek"],
+      ["Jour 11 — Morro Bay & Pismo Beach", "Rocher volcanique · dunes géantes · route vers SB"]
     ]
   },
   { n: 7, name: "Santa Barbara", state: "Californie · ville", img: "media/SANTA-BARBARA.jpeg", coords: [34.4208, -119.6982], date: "16–17 Juillet",
     desc: "En route : Morro Bay pour voir les loutres et Pismo Beach pour ses dunes. Puis étape chez Alexa, une parenthèse dans la Riviera américaine entre amis. Enfin de retour ici !",
     plan: [
-      ["Morro Bay", "Le rocher volcanique & le front de mer"],
-      ["Pismo Beach", "Dunes & balade sur le front de mer"],
-      ["Chez Alexa", "Retrouvailles après le mariage"],
+      ["Jours 12-13 — Retrouvailles", "Deux jours chez Alexa & ses amis"],
       ["Mission Santa Barbara", "Architecture coloniale espagnole"],
-      ["Butterfly Beach", "Coucher de soleil face au Pacifique"]
+      ["State Street & Butterfly Beach", "Balades & coucher de soleil"],
+      ["Sorties & restaurants", "La Riviera américaine en bonne compagnie"]
     ]
   },
   { n: 8, name: "Joshua Tree & Palm Springs", state: "Désert · parc", img: "media/JOSHUA-TREE.jpeg", coords: [33.8734, -115.9010], date: "18–19 Juillet",
     desc: "Passage par Palm Springs l'oasis, ses piscines turquoise et son architecture mid-century. Puis silence absolu. Les Yuccas, les cactus comme des sculptures. Nuit les yeux rivés sur les étoiles du désert.",
     plan: [
-      ["Hidden Valley loop", "Rando 1.5km entre les rochers"],
-      ["Keys View", "Vue sur la vallée de Coachella"],
-      ["Cholla Cactus Garden", "Heure dorée dans le désert"],
-      ["Nuit étoilée", "Ciel noir exceptionnel · astrophoto"],
-      ["Palm Springs", "Architecture mid-century & détente"]
+      ["Jour 14 — Ojai & Palm Springs", "Vallée d'artistes · déjeuner sur Palm Canyon Drive"],
+      ["Cabazon Dinosaurs", "Les dinos géants en béton · photo kitsch obligatoire"],
+      ["Arrivée Joshua Tree", "Hidden Valley Trail · Barker Dam"],
+      ["Keys View", "Vue panoramique Coachella Valley · coucher de soleil"],
+      ["Nuit étoilée dans le désert", "Un des ciels les plus sombres de Californie"],
+      ["Jour 15 — Cholla Cactus Garden", "Lever de soleil · cactus illuminés · Skull Rock"]
     ]
   },
   { n: 9, name: "Los Angeles · Retour", state: "Californie · ville", img: "media/LOS-ANGELES.jpeg", coords: [34.0522, -118.2437], date: "19–21 Juillet",
     desc: "La ville des anges, les palmiers, Santa Monica. Derniers jours de liberté avant l'envol pour Paris. Nuit finale dans le van devant l'Océan Pacifique.",
     plan: [
-      ["Venice Beach", "Skate, palmiers, soleil"],
-      ["Griffith Observatory", "Vue sur le Hollywood Sign"],
-      ["Runyon Canyon", "Randonnée vue sur LA"],
-      ["Santa Monica Pier", "Dernier coucher de soleil"],
-      ["LAX · Retour Paris", "21 juillet 2026"]
+      ["Jour 16 — Venice Beach & Santa Monica", "Boardwalk · Muscle Beach"],
+      ["Dockweiler Beach RV Park", "Nuit à 10 m du Pacifique · feux de plage autorisés"],
+      ["Jour 17 — Griffith Observatory", "Vue sur LA · Hollywood Sign"],
+      ["Dernier coucher de soleil", "Sur la plage · dernier soir"],
+      ["Jour 18 — Restitution du van", "Indie Campers · LAX · vol retour Paris"]
     ]
   }
 ];
@@ -2793,6 +2796,7 @@ setTimeout(() => {
 
   if (localStorage.getItem('pw_ok') === '1') {
     gate.classList.add('unlocked');
+    introVideo.play().catch(()=>{});
     return;
   }
 
@@ -2800,6 +2804,7 @@ setTimeout(() => {
     if (input.value === PW) {
       localStorage.setItem('pw_ok', '1');
       gate.classList.add('unlocked');
+      introVideo.play().catch(()=>{});
     } else {
       err.classList.add('show');
       input.value = '';
@@ -3051,8 +3056,8 @@ function initMap() {
   if (typeof L === 'undefined') { setTimeout(initMap, 200); return; }
   const map = L.map('map', { zoomControl: false, attributionControl: false, scrollWheelZoom: false })
     .setView([36.5, -119.5], 5);
-  L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png', {
-    maxZoom: 20, attribution: '&copy; Stadia Maps'
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    maxZoom: 20, attribution: '&copy; CartoDB', subdomains: 'abcd'
   }).addTo(map);
 
   const waterOverlay = document.createElement('div');
@@ -3594,6 +3599,17 @@ document.addEventListener('keydown', e => {
     if (modal.classList.contains('open')) closeStop();
     else if (!startedTrip) startTrip();
   }
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') {
+    music.pause();
+    engine.pause();
+  }
+});
+window.addEventListener('pagehide', () => {
+  music.pause();
+  engine.pause();
 });
 </script>
 
