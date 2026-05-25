@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Aperçu Mobile · American Dream</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: #1a1308;
+    color: #F0E8D8;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex; flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 60px;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(ellipse at 30% 20%, rgba(168,125,78,0.18), transparent 60%),
+      radial-gradient(ellipse at 70% 80%, rgba(123,92,58,0.18), transparent 60%),
+      linear-gradient(180deg, #18120A 0%, #0e0805 100%);
+  }
+
+  .header {
+    text-align: center; margin-bottom: 30px; max-width: 720px;
+  }
+  .tag {
+    font-size: .68rem; letter-spacing: .32em; text-transform: uppercase;
+    color: #A87D4E; margin-bottom: .8rem;
+  }
+  h1 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    letter-spacing: -0.01em; font-weight: 400;
+    color: #F5EDE0; margin-bottom: .8rem;
+  }
+  p.sub {
+    font-size: .85rem; line-height: 1.6;
+    color: rgba(245,237,224,.55);
+    max-width: 520px; margin: 0 auto;
+  }
+
+  .controls {
+    display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap;
+    justify-content: center;
+  }
+  .ctrl {
+    background: rgba(245,237,224,0.06);
+    border: 1px solid rgba(245,237,224,0.15);
+    color: rgba(245,237,224,.65);
+    padding: .55rem 1.1rem;
+    font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+    cursor: pointer; font-family: inherit;
+    transition: background .2s, border-color .2s, color .2s;
+  }
+  .ctrl:hover { background: rgba(168,125,78,0.15); border-color: #A87D4E; color: #F5EDE0; }
+  .ctrl.active { background: #A87D4E; border-color: #A87D4E; color: #1a1308; }
+
+  .stage {
+    display: flex; gap: 36px; align-items: flex-start;
+    flex-wrap: wrap; justify-content: center;
+  }
+
+  /* iPhone bezel */
+  .phone {
+    position: relative;
+    width: 390px; height: 844px;
+    background: #1a1308;
+    border-radius: 56px;
+    padding: 14px;
+    box-shadow:
+      0 0 0 2px #3a2a18,
+      0 0 0 6px #1a1308,
+      0 30px 80px rgba(0,0,0,.6),
+      0 10px 30px rgba(0,0,0,.4);
+    flex-shrink: 0;
+  }
+  .phone::before {
+    /* notch */
+    content: '';
+    position: absolute;
+    top: 22px; left: 50%; transform: translateX(-50%);
+    width: 120px; height: 32px;
+    background: #000; border-radius: 20px;
+    z-index: 10;
+  }
+  .phone .screen {
+    width: 100%; height: 100%;
+    border-radius: 42px; overflow: hidden;
+    background: #FAF5EE;
+    position: relative;
+  }
+  .phone iframe {
+    width: 100%; height: 100%;
+    border: 0; display: block;
+  }
+
+  /* SE size */
+  .phone.se {
+    width: 340px; height: 720px;
+    border-radius: 42px;
+  }
+  .phone.se::before {
+    width: 100px; height: 26px; top: 18px;
+  }
+  .phone.se .screen { border-radius: 30px; }
+
+  .phone-label {
+    text-align: center; margin-top: 18px;
+    font-size: .62rem; letter-spacing: .26em; text-transform: uppercase;
+    color: rgba(245,237,224,.4);
+  }
+  .phone-label strong { color: #A87D4E; font-weight: 600; }
+
+  .open-link {
+    display: inline-block; margin-top: 28px;
+    padding: .85rem 2rem;
+    background: transparent; border: 1px solid #A87D4E;
+    color: #A87D4E; font-size: .72rem;
+    letter-spacing: .26em; text-transform: uppercase;
+    text-decoration: none;
+    transition: background .25s, color .25s;
+  }
+  .open-link:hover { background: #A87D4E; color: #1a1308; }
+
+  @media (max-width: 900px) {
+    .stage { gap: 24px; }
+    .phone { transform: scale(0.85); transform-origin: top center; margin-bottom: -120px; }
+  }
+  @media (max-width: 450px) {
+    .phone { transform: scale(0.7); margin-bottom: -250px; }
+    body { padding: 24px 8px 40px; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="tag">Aperçu · format téléphone</div>
+    <h1>Le site sur mobile</h1>
+    <p class="sub">Le site est rendu ici dans des cadres iPhone. Vous pouvez interagir directement avec chaque écran : entrer le mot de passe, scroller, ouvrir la galerie, etc.</p>
+  </div>
+
+  <div class="controls">
+    <button class="ctrl active" data-w="390" data-h="844">iPhone 14 · 390×844</button>
+    <button class="ctrl" data-w="430" data-h="932">iPhone Pro Max · 430×932</button>
+    <button class="ctrl" data-w="375" data-h="667">iPhone SE · 375×667</button>
+    <button class="ctrl" data-w="360" data-h="780">Android · 360×780</button>
+  </div>
+
+  <div class="stage">
+    <div>
+      <div class="phone" id="phone1">
+        <div class="screen">
+          <iframe src="index.html" title="Capucine & Roméo · Mobile"></iframe>
+        </div>
+      </div>
+      <div class="phone-label"><strong>Aperçu interactif</strong> · scrollez & cliquez</div>
+    </div>
+  </div>
+
+  <a href="index.html" class="open-link" target="_top">Ouvrir le site complet →</a>
+
+<script>
+  const phone = document.getElementById('phone1');
+  const screenEl = phone.querySelector('.screen');
+  const iframe = phone.querySelector('iframe');
+
+  document.querySelectorAll('.ctrl').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.ctrl').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const w = parseInt(btn.dataset.w);
+      const h = parseInt(btn.dataset.h);
+      phone.style.width = (w + 28) + 'px';
+      phone.style.height = (h + 28) + 'px';
+    });
+  });
+</script>
+
+</body>
+</html>
