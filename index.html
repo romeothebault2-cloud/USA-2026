@@ -2258,7 +2258,7 @@
 <!-- ─────────────── ACT 1 · INTRO ─────────────── -->
 <div class="intro" id="intro">
   <div class="intro-media">
-    <video id="intro-video" autoplay muted playsinline loop poster="media/van-intro.jpg">
+    <video id="intro-video" autoplay muted playsinline loop preload="auto" poster="media/van-intro.jpg">
       <source src="media/van-intro.mp4" type="video/mp4" />
     </video>
   </div>
@@ -2381,7 +2381,7 @@
     </div>
     <div class="meta-item reveal-fade">
       <div class="lbl">Distance</div>
-      <div class="val">4 280 km</div>
+      <div class="val">1 676 km · 1 041 mi</div>
       <div class="sub">Côte Pacifique</div>
     </div>
     <div class="meta-item reveal-fade">
@@ -2422,7 +2422,7 @@
         <div id="map"></div>
         <div class="map-foot">
           <span>Départ <strong>SF</strong></span>
-          <span>Distance <strong>4 280 km</strong></span>
+          <span>Distance <strong>1 676 km · 1 041 mi</strong></span>
           <span>Arrivée <strong>Joshua Tree</strong></span>
         </div>
       </div>
@@ -2436,7 +2436,7 @@
     <div class="marquee-item">
       <span>Highway 1</span><span class="marquee-sep">✦</span>
       <span>Lance 610R</span><span class="marquee-sep">✦</span>
-      <span>4 280 km</span><span class="marquee-sep">✦</span>
+      <span>1 676 km · 1 041 mi</span><span class="marquee-sep">✦</span>
       <span>Pacific Ocean</span><span class="marquee-sep">✦</span>
       <span>14 jours</span><span class="marquee-sep">✦</span>
       <span>Capucine & Roméo</span><span class="marquee-sep">✦</span>
@@ -2444,7 +2444,7 @@
     <div class="marquee-item" aria-hidden="true">
       <span>Highway 1</span><span class="marquee-sep">✦</span>
       <span>Lance 610R</span><span class="marquee-sep">✦</span>
-      <span>4 280 km</span><span class="marquee-sep">✦</span>
+      <span>1 676 km · 1 041 mi</span><span class="marquee-sep">✦</span>
       <span>Pacific Ocean</span><span class="marquee-sep">✦</span>
       <span>14 jours</span><span class="marquee-sep">✦</span>
       <span>Capucine & Roméo</span><span class="marquee-sep">✦</span>
@@ -2796,7 +2796,11 @@ setTimeout(() => {
 
   if (localStorage.getItem('pw_ok') === '1') {
     gate.classList.add('unlocked');
-    introVideo.play().catch(()=>{});
+    introVideo.play().catch(() => {
+      const resume = () => { introVideo.play().catch(()=>{}); document.removeEventListener('touchstart', resume); document.removeEventListener('click', resume); };
+      document.addEventListener('touchstart', resume, { once: true });
+      document.addEventListener('click', resume, { once: true });
+    });
     return;
   }
 
