@@ -18,7 +18,7 @@ const PHOTOS = {
   // "san-francisco": {
   //   postcard: "photos/san-francisco/postcard.jpg",
   //   gallery: [
-  //     { src: "photos/san-francisco/01.jpg", caption: "Golden Gate au lever du soleil" },
+  //     { src: "photos/san-francisco/01.jpg", caption: "Golden Gate" },
   //     { src: "photos/san-francisco/02.jpg", caption: "Fisherman's Wharf" },
   //     { src: "photos/san-francisco/03.jpg", caption: "Première nuit dans le van" },
   //   ]
