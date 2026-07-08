@@ -11,18 +11,25 @@
  * ║               lightbox). caption = texte optionnel.     ║
  * ╚══════════════════════════════════════════════════════════╝
  */
-
 const PHOTOS = {
 
   /* ── Étape 1 · San Francisco ──────────────── 7 Juillet */
-  // "san-francisco": {
-  //   postcard: "photos/san-francisco/postcard.jpg",
-  //   gallery: [
-  //     { src: "photos/san-francisco/01.jpg", caption: "Golden Gate" },
-  //     { src: "photos/san-francisco/02.jpg", caption: "Fisherman's Wharf" },
-  //     { src: "photos/san-francisco/03.jpg", caption: "Première nuit dans le van" },
-  //   ]
-  // },
+const PHOTOS = {
+
+  "san-francisco": {
+    postcard: "photos/san-francisco/01SF.JPG",
+    gallery: [
+      { src: "photos/san-francisco/01SF.JPG", caption: "Golden Gate" },
+      { src: "photos/san-francisco/02SF.JPG", caption: "Golden Gate" },
+      { src: "photos/san-francisco/03SF.JPG", caption: "Capucine avec des capucines" },
+      { src: "photos/san-francisco/VIDEOSF.mp4", caption: "San Francisco" },
+    ]
+  },
+
+  // ... reste des étapes commentées
+
+};
+
 
   /* ── Étape 2 · Lake Tahoe & Bodie ─────────── 8–9 Juillet */
   // "lake-tahoe": {
