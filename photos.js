@@ -13,7 +13,6 @@
  */
 const PHOTOS = {
 
-  /* ── Étape 1 · San Francisco ──────────────── 7 Juillet */
   "san-francisco": {
     postcard: "photos/san-francisco/01SF.JPG",
     gallery: [
@@ -22,6 +21,8 @@ const PHOTOS = {
       { src: "photos/san-francisco/03SF.jpeg", caption: "Capucine avec des capucines" },
     ]
   },
+
+};
 
   /* ── Étape 2 · Lake Tahoe & Bodie ─────────── 8–9 Juillet */
   // "lake-tahoe": {
