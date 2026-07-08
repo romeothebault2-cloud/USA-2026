@@ -14,8 +14,6 @@
 const PHOTOS = {
 
   /* ── Étape 1 · San Francisco ──────────────── 7 Juillet */
-const PHOTOS = {
-
   "san-francisco": {
     postcard: "photos/san-francisco/01SF.JPG",
     gallery: [
