@@ -2613,13 +2613,7 @@
 /* ════════════════════════════════════════
    DATA
 ═════════════════════════════════════════ */
-  STOPS[0].modalImg = "photos/san-francisco/01SF.JPG";
-STOPS[0].photos = [
-  { src: "photos/san-francisco/01SF.JPG", caption: "Golden Gate" },
-  { src: "photos/san-francisco/02SF.jpeg", caption: "Golden Gate" },
-  { src: "photos/san-francisco/03SF.jpeg", caption: "Capucine avec des capucines" },
-];
-const STOPS = [
+  const STOPS = [
   { n: 1, name: "San Francisco", state: "Californie · ville", img: "media/SAN-FRANCISCO.jpeg", coords: [37.7749, -122.4194], date: "7 Juillet",
     desc: "La baie, le brouillard, le pont rouge dans la lumière du matin. Arrivée à l'aéroport, premiers pas sur le sol américain. C'est ici que tout commence.",
     plan: [
@@ -2727,7 +2721,12 @@ if (typeof PHOTOS !== 'undefined') {
     if (p.gallery)  s.photos = p.gallery;
   });
 }
-
+STOPS[0].modalImg = "photos/san-francisco/01SF.JPG";
+STOPS[0].photos = [
+  { src: "photos/san-francisco/01SF.JPG", caption: "Golden Gate" },
+  { src: "photos/san-francisco/02SF.jpeg", caption: "Golden Gate" },
+  { src: "photos/san-francisco/03SF.jpeg", caption: "Capucine avec des capucines" },
+];
 /* ════════════════════════════════════════
    INTRO — démarrage moteur + reveal
 ═════════════════════════════════════════ */
